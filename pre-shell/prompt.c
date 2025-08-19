@@ -16,12 +16,12 @@ int main(void)
 
 	while (1)
 	{
-		printf("$");
+		printf("Dura-Shell:");
 		nread = getline(&line, &len, stdin);
 
 		if (nread == -1)
 		{
-			printf("\nChao\n");
+			printf("\nChaito baby\n");
 			break;
 		}
 		printf("%s", line);
