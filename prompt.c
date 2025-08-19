@@ -16,7 +16,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("$");
+		printf("Dura_Shell:");
 		nread = getline(&line, &len, stdin);
 
 		if (nread == -1)
