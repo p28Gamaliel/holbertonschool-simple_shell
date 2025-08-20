@@ -3,9 +3,6 @@
 
 /**
  * main - prints what the user is going to enter
- * @line: where we will store the chain
- * @len: how much space has been reserved
- * @nread: where what getline reserves will be stored
  * Return: return -1
  */
 int main(void)

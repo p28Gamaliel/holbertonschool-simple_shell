@@ -4,17 +4,17 @@
 
 /**
  * split_string - split
- * @strtok: split a string
- * @strdup: duplicate the string
+ *
+ * @str: counter for the string that will be tokenized
+ *
  * Return: the tokens
  */
-
 char **split_string(char *str)
 {
 	char *token;
 	int i = 0;
-
 	char **tokens = malloc(100 * sizeof(char *));
+
 	if (tokens == NULL)
 	{
 		perror("malloc failed");
@@ -33,6 +33,11 @@ char **split_string(char *str)
 
 	return (tokens);
 }
+
+/**
+ * main - go through the words that need to be separated
+ * Return: 0
+ */
 
 int main(void)
 {
