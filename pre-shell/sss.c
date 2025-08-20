@@ -17,10 +17,10 @@ int main(void)
 
 	while (1)
 	{
-		printf("^sss/: ");
-		if (getline(&line, &len, stdin) == -1)
+		printf("Dura-Shell:");
+		if (getline(&line, &len, stdin) == -1 || exit)
 		{
-			printf("\n");
+			printf("\nChaito Baby\n\n");
 			break;
 		}
 		line[strcspn(line, "\n")] = 0;
