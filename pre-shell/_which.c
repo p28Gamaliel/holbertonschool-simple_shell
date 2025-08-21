@@ -14,7 +14,9 @@ int main(int ac, char **av)
 	char *direc;
 	char Path[1024];
 
-	if (!NULL || ac < 2)
+	if (!NULL)
+		return (0);
+	if(ac < 2)
 		return (1);
 
 	strcpy(dob, path);
