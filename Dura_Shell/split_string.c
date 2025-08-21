@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * split_string - separa una línea en tokens
- * @str: línea original
- * Return: array de tokens terminados en NULL
+ * split_string - separates a string into tokens
+ * @str: original string
+ * Return: array of tokens finished in NULL
  */
 
 char **split_string(char *str)

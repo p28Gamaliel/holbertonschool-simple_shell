@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - super simple shell
+ * main - simple shell
  * Return: 0
  */
 
