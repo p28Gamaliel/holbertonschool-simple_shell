@@ -11,18 +11,19 @@ char **split_string(char *str)
 	char *token;
 	int i = 0;
 	char **tokens = malloc(100 * sizeof(char *));
+	char *ignore = " \t\n,";
 
 	if (!tokens)
 	{
 		perror("malloc failed");
 		exit(1);
 	}
-	token = strtok(str, " ");
+	token = strtok(str, ignore);
 	while (token)
 	{
 		tokens[i] = token;
 		i++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, ignore);
 	}
 	tokens[i] = NULL;
 	return (tokens);
