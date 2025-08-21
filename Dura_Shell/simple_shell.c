@@ -16,7 +16,7 @@ int main(void)
 		line = read_line();
 		if (!line)
 		{
-			printf("\nChaito Baby\n");
+			printf("\n\nNos vemos miamol\n\n");
 			break;
 		}
 		if (is_exit(line))

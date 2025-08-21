@@ -15,12 +15,23 @@ char *find_in_path(char *command)
 	if (strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
-			return (strdup(command));
+		{
+			char *cpy = malloc(strlen(command) + 1);
+			if (!cpy)
+				return (NULL);
+			strcpy(cpy, command);
+			return (cpy);
+		}
 		return (NULL);
 	}
-	dob = strdup(path);
+	if (!path)
+		return (NULL);
+
+	dob = malloc(strlen(path) + 1);
 	if (!dob)
 		return (NULL);
+	strcpy(dob, path);
+
 	dir = strtok(dob, ":");
 	while (dir)
 	{
