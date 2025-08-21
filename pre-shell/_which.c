@@ -10,12 +10,15 @@
 int main(int ac, char **av)
 {
 	char *path = getenv("PATH");
-	char *dob = malloc(strlen(path) + 1);
-	char *direc;
-	char Path[1024];
+		if (path == NULL)
+			return (1);
 
-	if (!NULL)
-		return (0);
+	char *direc;
+	char gran_path[1024];
+	char *dob = malloc(strlen(path) + 1);
+		if (dob == NULL)
+			return (1);
+
 	if(ac < 2)
 		return (1);
 
@@ -26,14 +29,16 @@ int main(int ac, char **av)
 	{
 		int len = strlen(direc) + strlen(av[1]) + 2;
 
-		if (len < (int)sizeof(Path))
+		if (len < (int)sizeof(gran_path))
 		{
-			strcpy(Path, direc);
-			strcat(Path, "/");
-			strcat(Path, av[1]);
+			strcpy(gran_path, direc);
+			strcat(gran_path, "/");
+			strcat(gran_path, av[1]);
 
-			if (access(Path, X_OK) == 0)
-				printf("%s\n", Path);
+			if (access(gran_path, X_OK) == 0)
+			{
+				printf("%s\n", gran_path);
+			}
 		}
 		direc = strtok(NULL, ":");
 	}
