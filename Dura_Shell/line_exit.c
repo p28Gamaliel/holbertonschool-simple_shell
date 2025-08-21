@@ -28,6 +28,9 @@ char *read_line(void)
 int is_exit(char *line)
 {
 	if (line && strcmp(line, "exit") == 0)
+	{
+		printf("\n\nNos Vemos Miamol\n\n");
 		return (1);
+	}
 	return (0);
 }
