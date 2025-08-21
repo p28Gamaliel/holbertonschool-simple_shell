@@ -20,7 +20,7 @@ int main(void)
 		printf("Dura-Shell:");
 		if (getline(&line, &len, stdin) == -1 || exit)
 		{
-			printf("\nChaito Baby\n");
+			printf("\nChaito Baby\n\n");
 			break;
 		}
 		line[strcspn(line, "\n")] = 0;
