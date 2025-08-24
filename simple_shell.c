@@ -12,11 +12,15 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		printf("Dura-Shell:$ ");
+		if (isatty(STDIN_FILENO))
+			printf("Dura-Shell:$ ");
+		fflush(stdout);
+
 		line = read_line();
 		if (!line)
 		{
-			printf("\n\nNos vemos miamol\n\n");
+			if (isatty(STDIN_FILENO))
+				printf(stderr, "\n\nNos vemos miamol\n\n");
 			break;
 		}
 		if (is_exit(line))
