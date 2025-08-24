@@ -5,10 +5,10 @@
  * Return: 0
  */
 
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
 	char *line;
-	char **argv;
+	(void)argc;
 
 	while (1)
 	{
@@ -26,7 +26,7 @@ int main(void)
 		}
 		argv = split_string(line);
 		if (argv[0])
-			execute_command(argv);
+			execute_command(argv, envp);
 		free(argv);
 		free(line);
 	}

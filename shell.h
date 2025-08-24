@@ -10,8 +10,8 @@
 char *read_line(void);
 int is_exit(char *line);
 char **split_string(char *str);
-char *find_in_path(char *command);
-void execute_command(char **argv);
+char *find_in_path(char *command, char **envp);
+void execute_command(char **argv, char **envp);
 
 #endif
 

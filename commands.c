@@ -33,7 +33,7 @@ char *find_in_path(char *command, char **envp)
 			path = envp[i] + 5;
 			break;
 		}
-		i++
+		i++;
 	}
 	if (!path)
 		return (NULL);
@@ -72,13 +72,13 @@ char *find_in_path(char *command, char **envp)
  * execute_command - executes command with fork+execve
  * @argv: arguments ended in NULL
  */
-void execute_command(char **argv)
+void execute_command(char **argv, char **envp)
 {
 	pid_t child_pid;
 	int status;
 	char *cmd_path;
 
-	cmd_path = find_in_path(argv[0]);
+	cmd_path = find_in_path(argv[0], envp);
 	if (!cmd_path)
 	{
 		fprintf(stderr, "Dura-Shell: command not found: %s\n", argv[0]);
