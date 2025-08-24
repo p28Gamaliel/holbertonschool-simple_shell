@@ -20,7 +20,7 @@ int main(int argc, char **argv, char **envp)
 		if (!line)
 		{
 			if (isatty(STDIN_FILENO))
-				printf(stderr, "\n\nNos vemos miamol\n\n");
+				fprintf(stderr, "\n\nNos vemos miamol\n\n");
 			break;
 		}
 		if (is_exit(line))
