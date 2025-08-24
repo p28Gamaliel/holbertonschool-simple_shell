@@ -6,9 +6,10 @@
  * Return: string with the full route (malloc), or NULL if it doesnt exist
  */
 
-char *find_in_path(char *command)
+char *find_in_path(char *command, char **envp)
 {
-	char *path = getenv("PATH");
+	char *path = NULL;
+	int i = 0;
 	char *dob, *dir, *full_path;
 	int len;
 
@@ -23,6 +24,16 @@ char *find_in_path(char *command)
 			return (cpy);
 		}
 		return (NULL);
+	}
+
+	while (envp[i])
+	{
+		if (strncmp(envp[i], "PATH=", 5) == 0)
+		{
+			path = envp[i] + 5;
+			break;
+		}
+		i++
 	}
 	if (!path)
 		return (NULL);
