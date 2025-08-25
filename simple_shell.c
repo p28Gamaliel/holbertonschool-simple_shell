@@ -34,10 +34,18 @@ int main(int argc, char **argv, char **envp)
 			exit(last_exit_status);
 		}
 		argv = split_string(line);
-		if (argv[0])
+
+		if(argv[0] && strcmp(argv[0], "env") == 0)
+		{
+			print_env(envp);
+		}
+		else if (argv[0])
+		{
 			execute_command(argv, envp);
+		}
 		free(argv);
 		free(line);
+		continue;
 	}
 	return (0);
 }

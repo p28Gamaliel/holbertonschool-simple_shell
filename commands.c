@@ -55,6 +55,24 @@ char *get_path_env(char **envp)
 }
 
 /**
+ * print_env - imprime todas las variables de entorno
+ * @envp: arreglo de strings con el entorno
+ */
+
+extern int last_exit_status;
+
+void print_env(char **envp)
+{
+	int i = 0;
+
+	while (envp[i])
+	{
+		printf("%s\n", envp[i]);
+		i++;
+	}
+}
+
+/**
  * search_command_in_path - Searches the path
  * @path: The PATH string containing colon-separated directories
  * @command: The command to search for
