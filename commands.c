@@ -124,20 +124,24 @@ char *search_command_in_path(char *path, char *command)
  */
 extern int last_exit_status;
 
-void execute_command(int argc, char **argv, char **envp)
+void execute_command(char **argv, char **envp)
 {
 	pid_t child_pid;
 	int status;
 	char *cmd_path;
 	char *shell_name = "Dura_Shell";
+	int argc = 0;
 
-	if (argc < 2)
+	while (argv[argc] != NULL)
+		argc++;
+
+	if (argc < 1)
 	{
 		fprintf(stderr, "%s: No command provided\n", shell_name);
-			return (1);
+			return;
 	}
 
-	cmd_path = find_in_path(argv[1], envp);
+	cmd_path = find_in_path(argv[0], envp);
 	if (!cmd_path)
 	{
 		fprintf(stderr, "%s: 1: %s: not found\n", shell_name, argv[1]);
@@ -152,7 +156,7 @@ void execute_command(int argc, char **argv, char **envp)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(cmd_path, &argv[1], envp) == -1)
+		if (execve(cmd_path, argv, envp) == -1)
 		{
 			perror("execve");
 			exit(EXIT_FAILURE);
@@ -162,7 +166,7 @@ void execute_command(int argc, char **argv, char **envp)
 	{
 		wait(&status);
 		if (WIFEXITED(status))
-			last_exit_status = WEXITSTATUS(status);
+			last_exit_status = WIFEXITED(status) ? WEXITSTATUS(status) : 1;
 		else
 			last_exit_status = 1;
 
