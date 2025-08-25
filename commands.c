@@ -41,6 +41,7 @@ char *find_in_path(char *command, char **envp)
 char *get_path_env(char **envp)
 {
 	int i = 0;
+	char *path = NULL;
 
 	while (envp[i])
 	{
@@ -51,8 +52,7 @@ char *get_path_env(char **envp)
 		}
 		i++;
 	}
-	if (!path)
-		return (NULL);
+	return (NULL);
 }
 
 /**
