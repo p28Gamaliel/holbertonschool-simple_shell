@@ -8,6 +8,8 @@
  * Return: 0
  */
 
+int last_exit_status = 0;
+
 int main(int argc, char **argv, char **envp)
 {
 	char *line;
