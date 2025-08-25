@@ -47,7 +47,6 @@ char *get_path_env(char **envp)
 	{
 		if (strncmp(envp[i], "PATH=", 5) == 0)
 			return (envp[i] + 5);
-			break;
 		i++;
 	}
 	return (NULL);
