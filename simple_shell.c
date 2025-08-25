@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **envp)
 		if (is_exit(line))
 		{
 			free(line);
-			break;
+			exit(last_exit_status);
 		}
 		argv = split_string(line);
 		if (argv[0])

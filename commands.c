@@ -10,6 +10,7 @@
 char *find_in_path(char *command, char **envp)
 {
 	char *path;
+	int last_exit_status = 0;
 
 	if (strchr(command, '/'))
 	{
@@ -127,6 +128,11 @@ void execute_command(char **argv, char **envp)
 	else
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+			last_exit_status = WEXITSTATUS(status);
+		else
+			last_exit_status = 1;
+
 		free(cmd_path);
 	}
 }
