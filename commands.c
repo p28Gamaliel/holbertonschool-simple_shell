@@ -129,11 +129,17 @@ void execute_command(char **argv, char **envp)
 	pid_t child_pid;
 	int status;
 	char *cmd_path;
+	char *Shell_name = "Dura_Shell";
 
+	shell_name = argv[0];
+	if (argc < 2)
+	{
+		fprintf(stderr, "%s: No command provided\n, Shell_name");
+			return (1);
 	cmd_path = find_in_path(argv[0], envp);
 	if (!cmd_path)
 	{
-		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], argv[0]);
+		fprintf(stderr, "%s: 1: %s: not found\n", Shell_name, argv[0]);
 		exit(127);
 	}
 	child_pid = fork();
