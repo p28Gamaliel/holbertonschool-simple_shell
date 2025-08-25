@@ -6,11 +6,11 @@
  * @envp: manually search for the path
  * Return: string with the full route (malloc), or NULL if it doesnt exist
  */
+extern int last_exit_status;
 
 char *find_in_path(char *command, char **envp)
 {
 	char *path;
-	int last_exit_status = 0;
 
 	if (strchr(command, '/'))
 	{
@@ -39,6 +39,8 @@ char *find_in_path(char *command, char **envp)
  * Return: Pointer to the PATH string (excluding "PATH="), or NULL if not found
  */
 
+extern int last_exit_status;
+
 char *get_path_env(char **envp)
 {
 	int i = 0;
@@ -59,6 +61,8 @@ char *get_path_env(char **envp)
  *
  * Return: Pointer to the full path (malloc'd) if found, or NULL
  */
+
+extern int last_exit_status;
 
 char *search_command_in_path(char *path, char *command)
 {
@@ -100,6 +104,8 @@ char *search_command_in_path(char *path, char *command)
  * @envp: manually search for the path
  * @argv: arguments ended in NULL
  */
+extern int last_exit_status;
+
 void execute_command(char **argv, char **envp)
 {
 	pid_t child_pid;
