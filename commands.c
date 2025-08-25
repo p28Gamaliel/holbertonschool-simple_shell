@@ -108,7 +108,7 @@ void execute_command(char **argv, char **envp)
 	cmd_path = find_in_path(argv[0], envp);
 	if (!cmd_path)
 	{
-		fprintf(stderr, "./Dura-Shell: 1: %s: not found\n", program name, argv[0]);
+		fprintf(stderr, "./Dura-Shell: 1: %s: not found\n", argv[0]);
 		exit(127);
 	}
 	child_pid = fork();
