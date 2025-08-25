@@ -28,7 +28,7 @@ char *find_in_path(char *command, char **envp)
 	path = get_path_env(envp);
 	if (!path)
 		return (NULL);
-	return (search_commad_in_path(path, command));
+	return (search_command_in_path(path, command));
 }
 
 /**
@@ -39,7 +39,6 @@ char *find_in_path(char *command, char **envp)
  */
 
 char *get_path_env(char **envp)
-	A
 {
 	int i = 0;
 
