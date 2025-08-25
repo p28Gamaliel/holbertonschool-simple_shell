@@ -2,6 +2,9 @@
 
 /**
  * main - simple shell
+ * @argc: number of command-line arguments
+ * @argv: array of strings representing the command-line arguments
+ * @envp: array of strings representing the environment variables
  * Return: 0
  */
 

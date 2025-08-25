@@ -3,21 +3,20 @@
 /**
  * find_in_path - searches command in PATH
  * @command: name of the command
+ * @envp: manually search for the path
  * Return: string with the full route (malloc), or NULL if it doesnt exist
  */
 
 char *find_in_path(char *command, char **envp)
 {
-	char *path = NULL;
-	int i = 0;
-	char *dob, *dir, *full_path;
-	int len;
+	char *path;
 
 	if (strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
 		{
 			char *cpy = malloc(strlen(command) + 1);
+
 			if (!cpy)
 				return (NULL);
 			strcpy(cpy, command);
@@ -25,6 +24,24 @@ char *find_in_path(char *command, char **envp)
 		}
 		return (NULL);
 	}
+
+	path = get_path_env(envp);
+	if (!path)
+		return (NULL);
+	return (search_commad_in_path(path, command));
+}
+
+/**
+ * get_path_env - Retrieves the PATH environment variable from envp
+ * @envp: Array of environment variables
+ *
+ * Return: Pointer to the PATH string (excluding "PATH="), or NULL if not found
+ */
+
+char *get_path_env(char **envp)
+	A
+{
+	int i = 0;
 
 	while (envp[i])
 	{
@@ -37,6 +54,20 @@ char *find_in_path(char *command, char **envp)
 	}
 	if (!path)
 		return (NULL);
+}
+
+/**
+ * search_command_in_path - Searches the path
+ * @path: The PATH string containing colon-separated directories
+ * @command: The command to search for
+ *
+ * Return: Pointer to the full path (malloc'd) if found, or NULL
+ */
+
+char *search_command_in_path(char *path, char *command)
+{
+	char *dob, *dir, *full_path;
+	int len;
 
 	dob = malloc(strlen(path) + 1);
 	if (!dob)
@@ -70,6 +101,7 @@ char *find_in_path(char *command, char **envp)
 
 /**
  * execute_command - executes command with fork+execve
+ * @envp: manually search for the path
  * @argv: arguments ended in NULL
  */
 void execute_command(char **argv, char **envp)
