@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-extern int last_exit_status = 0;
+int last_exit_status = 0;
 
 void print_env(char ** envp);
 int main(int argc, char **argv, char **envp)
